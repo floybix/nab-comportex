@@ -676,6 +676,10 @@
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;nab-comportex.method/optim-nab-thresholds</span>"}
 ;; <=
 
+;; **
+;;; Find the optimal thresholds and best scores under each scoring profile.
+;; **
+
 ;; @@
 (time
   (mapv
@@ -697,10 +701,27 @@
 ;;; {"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fp-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.7000000000000004</span>"},{"type":"html","content":"<span class='clj-double'>63.04518935105084</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:standard</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.48000000000000026</span>"},{"type":"html","content":"<span class='clj-double'>67.3658243985473</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fn-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.48000000000000026</span>"},{"type":"html","content":"<span class='clj-double'>71.92204385190509</span>"}]}]}]}
 ;; <=
 
+;; **
+;;; Write out the delta anomaly scores.
+;; **
+
 ;; @@
 (nab-io/write-nab-results nabdir "comportexDepth1GlobalFrac16Stim18"
                           anomalies-depth1-global-frac16-st18)
 
+;; @@
+;; =>
+;;; {"type":"html","content":"<span class='clj-nil'>nil</span>"}
+;; <=
+
+;; **
+;;; Write out the raw bursting rate scores.
+;; **
+
+;; @@
+(nab-io/write-nab-results nabdir "comportexDepth1GlobalFrac16Stim18NoDelta"
+                          (->> bursts-depth1-global-frac16-st18
+                               (util/remap anom/anomaly-scores)))
 ;; @@
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>"}
@@ -749,6 +770,10 @@
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;nab-comportex.method/anomalies-depth1-efft-global-frac16-st18</span>"}
 ;; <=
 
+;; **
+;;; Find the optimal thresholds and best scores under each scoring profile.
+;; **
+
 ;; @@
 (time
   (mapv
@@ -769,6 +794,10 @@
 ;; =>
 ;;; {"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fp-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.6500000000000004</span>"},{"type":"html","content":"<span class='clj-double'>63.589024151423054</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:standard</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.47000000000000025</span>"},{"type":"html","content":"<span class='clj-double'>67.88487991749766</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fn-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.26000000000000006</span>"},{"type":"html","content":"<span class='clj-double'>72.53697625727789</span>"}]}]}]}
 ;; <=
+
+;; **
+;;; Write out the delta anomaly scores.
+;; **
 
 ;; @@
 (nab-io/write-nab-results nabdir "comportexDepth1EfftGlobalFrac16Stim18"

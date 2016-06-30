@@ -6,7 +6,30 @@ the [Numenta Anomaly Benchmark](https://github.com/numenta/NAB).
 
 ## Usage
 
-FIXME
+To reproduce the results submitted to the [2016 NAB Competition](http://numenta.org/nab/):
+
+1. install [Leiningen](http://leiningen.org/).
+2. clone this git repo. It should be placed alongside the `NAB`
+   directory so that data files can be read from and result files
+   written to `../NAB`.
+3. In the `NAB` directory:
+  * `python scripts/create_new_detector.py --detector comportexDepth1GlobalFrac16Stim18`
+  * `python scripts/create_new_detector.py --detector comportexDepth1GlobalFrac16Stim18NoDelta`
+  * `python scripts/create_new_detector.py --detector comportexDepth1EfftGlobalFrac16Stim18`
+4. In the `nab-comportex` directory:
+  * `lein repl`
+5. In the repl: `(start-notebook)`
+6. Note the port number such as 12345, then go to
+   http://localhost:12345/worksheet.html?filename=worksheeets/method.clj
+7. Keep pressing Shift+Enter...
+
+The results will be written into `../NAB/results/`.
+
+It would also be possible to run the clojure file
+`worksheets/method.clj` in other ways, interactive or not.
+
+Comportex release 0.0.15
+
 
 ## License
 
