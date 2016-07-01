@@ -4,9 +4,16 @@ Support and experiments for running
 [Comportex](https://github.com/htm-community/comportex) HTM models on
 the [Numenta Anomaly Benchmark](https://github.com/numenta/NAB).
 
+## Results
+
+The results as submitted to the
+[2016 NAB Competition](http://numenta.org/nab/) can be found in the
+`results` directory.
+
 ## Usage
 
-To reproduce the results submitted to the [2016 NAB Competition](http://numenta.org/nab/):
+To reproduce the results submitted to the
+[2016 NAB Competition](http://numenta.org/nab/):
 
 1. install [Leiningen](http://leiningen.org/).
 2. clone this git repo. It should be placed alongside the `NAB`
@@ -27,8 +34,6 @@ The results will be written into `../NAB/results/`.
 
 It would also be possible to run the clojure file
 `worksheets/method.clj` in other ways, interactive or not.
-
-Comportex release 0.0.15
 
 
 ## License
