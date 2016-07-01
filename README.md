@@ -4,6 +4,9 @@ Support and experiments for running
 [Comportex](https://github.com/htm-community/comportex) HTM models on
 the [Numenta Anomaly Benchmark](https://github.com/numenta/NAB).
 
+For context, read the blog post
+[Attempting the Numenta Anomaly Benchmark](http://floybix.github.io/2016/07/01/attempting-nab).
+
 ## Results
 
 The results as submitted to the
