@@ -21,6 +21,13 @@ Headline results:
 | _original NuPIC model, raw bursting score_    | 52.5     | 41.1        | 58.3        |
 | selected Comportex model, delta anomaly score | 64.6     | 58.8        | 69.6        |
 
+Effective time step model results:
+
+| model                                         | standard | low FP rate | low FN rate |
+|-----------------------------------------------|----------|-------------|-------------|
+| effective time steps when 20% columns change  | 64.7     | 59.8        | 69.5        |
+
+
 ## Usage
 
 To reproduce the results submitted to the
