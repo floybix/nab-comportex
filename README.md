@@ -13,6 +13,15 @@ The results as submitted to the
 [2016 NAB Competition](http://numenta.org/nab/) can be found in the
 `results` directory.
 
+Headline results:
+
+| model                                         | standard | low FP rate | low FN rate |
+|--------------------------------------------------------------------------------------|
+| _original NuPIC model + anomaly likelihood_   | 65.3     | 58.6        | 69.4        |
+| _original NuPIC model, raw bursting score_    | 52.5     | 41.1        | 58.3        |
+| selected Comportex model, delta anomaly score | 64.6     | 58.8        | 69.6        |
+
+
 ## Usage
 
 To reproduce the results submitted to the
