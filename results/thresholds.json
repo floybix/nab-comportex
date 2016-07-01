@@ -1,0 +1,44 @@
+{
+    "comportexDepth1EfftGlobalFrac16Stim18": {
+        "reward_low_FN_rate": {
+            "score": 9.853618140281288,
+            "threshold": 0.47187805175781267
+        },
+        "reward_low_FP_rate": {
+            "score": 22.701188446074834,
+            "threshold": 0.6500244140625
+        },
+        "standard": {
+            "score": 34.14573845257381,
+            "threshold": 0.650390625
+        }
+    },
+    "comportexDepth1GlobalFrac16Stim18": {
+        "reward_low_FN_rate": {
+            "score": 10.108216078368441,
+            "threshold": 0.48754882812500033
+        },
+        "reward_low_FP_rate": {
+            "score": 20.302788456062842,
+            "threshold": 0.7000000000000001
+        },
+        "standard": {
+            "score": 33.794159175855334,
+            "threshold": 0.7000000000000001
+        }
+    },
+    "comportexDepth1GlobalFrac16Stim18NoDelta": {
+        "reward_low_FN_rate": {
+            "score": -10.018643010325897,
+            "threshold": 0.549999237060547
+        },
+        "reward_low_FP_rate": {
+            "score": 7.83849076901456,
+            "threshold": 0.6249023437500002
+        },
+        "standard": {
+            "score": 21.981356989674097,
+            "threshold": 0.549999237060547
+        }
+    }
+}
