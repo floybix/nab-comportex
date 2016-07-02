@@ -37,6 +37,7 @@ To reproduce the results submitted to the
 2. clone this git repo. It should be placed alongside the `NAB`
    directory so that data files can be read from and result files
    written to `../NAB`.
+  * `git checkout v0.1.0`
 3. In the `NAB` directory:
   * `python scripts/create_new_detector.py --detector comportexDepth1GlobalFrac16Stim18`
   * `python scripts/create_new_detector.py --detector comportexDepth1GlobalFrac16Stim18NoDelta`

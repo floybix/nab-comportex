@@ -512,7 +512,7 @@
 ;; @@
 ;; run on the whole corpus!
 
-(def this-spec
+(def spec-headline
   (util/deep-merge
    spec-baseline
    {:ff-potential-radius 1.0
@@ -527,7 +527,7 @@
          (fn [file-id]
            (let [ts (ts-data file-id)
                  _ (print (str file-id \newline))
-                 a-out (anom/htm-burst-stream ts (partial make-nab-model this-spec))]
+                 a-out (anom/htm-burst-stream ts (partial make-nab-model-from-range spec-headline))]
              [file-id
               a-out])))
         (into {})))
@@ -636,7 +636,7 @@
 ;; @@
 ;; run on the whole corpus!
 
-(def this-spec
+(def spec-efft
   (util/deep-merge
    spec-baseline
    {:ff-potential-radius 1.0
@@ -652,7 +652,7 @@
          (fn [file-id]
            (let [ts (ts-data file-id)
                  _ (print (str file-id \newline))
-                 a-out (anom/htm-burst-stream ts (partial make-nab-model this-spec))]
+                 a-out (anom/htm-burst-stream ts (partial make-nab-model-from-range spec-efft))]
              [file-id
               a-out])))
         (into {})))
@@ -726,9 +726,13 @@
 ;; @@
 
 ;; @@
-(nab-sanity-runner (ts-data temp1) baseline-spec)
-;(nab-sanity-runner (ts-data cpu77) baseline-spec)
+(nab-sanity-runner (ts-data temp1) spec-baseline)
+;(nab-sanity-runner (ts-data cpu77) spec-baseline)
 
+;; @@
+
+;; @@
+(stop-all-runners)
 ;; @@
 
 ;; @@
