@@ -6,8 +6,8 @@
             [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.set :as set]
-            [clojure.string :as str]
-            ))
+            [clojure.string :as str]))
+
 
 (def time-formatter
   (f/formatter "yyyy-MM-dd HH:mm:ss"))
@@ -66,8 +66,8 @@
              "0" ;; label - ?
              "0.0"
              "0.0"
-             "0.0"
-             ]))))))
+             "0.0"]))))))
+
 
 (defn write-nab-results
   [nabdir detector-name all-anomalies]

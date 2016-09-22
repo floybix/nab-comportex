@@ -6,9 +6,9 @@
 
 ;; **
 ;;; _Felix Andrews_
-;;; 
+;;;
 ;;; I show results using Comportex on the [Numenta Anomaly Benchmark](http://numenta.org/nab/).
-;;; 
+;;;
 ;; **
 
 ;; @@
@@ -158,7 +158,7 @@
 ;;;   :hour-of-day 0,
 ;;;   :is-weekend? false,
 ;;;   :value -18.127229468299998})
-;;; 
+;;;
 ;; <-
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-nil'>nil</span>"}
@@ -215,14 +215,14 @@
                          [[(dec start-i) 0]
                           [start-i scale]
                           [end-i scale]
-                          [(inc end-i) 0]
-                          ])))
+                          [(inc end-i) 0]])))
+
                    (range n-wins))
         plot-range [[0 (count ts)] :all]]
     (plot/list-plot (concat [[warmup 0]]
-                             win-list
+                            win-list
                              [[(count ts) 0]])
-                      :joined true
+                    :joined true
                       :color "red")))
 
 (defn ts-plot
@@ -239,18 +239,18 @@
         (plot/list-plot (map-indexed #(vector % (:value %2)) (take warmup ts))
                         :plot-range plot-range
                         :joined true
-                        :color "gray"
-                        )
-      )))
+                        :color "gray"))))
+
+
 
 (defn file-plot
   [file-id]
   (let [ts (ts-data file-id)
         scale (apply max 1.0 (map :value ts))
         win-plot (anomaly-window-plot ts file-id scale)]
-  (plot/compose
-     (ts-plot ts)
-     win-plot)))
+   (plot/compose
+      (ts-plot ts)
+      win-plot)))
 
 ;; @@
 ;; =>
@@ -335,10 +335,10 @@
     :perm-punish 0.001
     :perm-connected 0.20
     :perm-init 0.24
-    :punish? true
-    }
-   :transition-similarity 1.0
-   })
+    :punish? true}
+
+   :transition-similarity 1.0})
+
 
 (defn make-nab-model-from-range
   [spec lower upper]
@@ -349,10 +349,10 @@
      [spec]
      {:value [:value value-encoder]}
      {:day-time (e/sensor-cat
-                 [:hour-of-day hour-encoder]
+                 [:hour-of-day hour-encoder])})))
                                         ;[:day-of-week day-of-week-encoder]
-                 )
-      })))
+
+
 
 (defn make-nab-model
   [spec ts]
@@ -418,15 +418,15 @@
 
 ;; @@
 (time
-(def out-nojump
-  (htm-anomaly-stream (ts-data nojump) spec-baseline)))
+ (def out-nojump
+   (htm-anomaly-stream (ts-data nojump) spec-baseline)))
 ;; @@
 ;; ->
 ;;; t = 0
 ;;; t = 2000
 ;;; t = 4000
 ;;; &quot;Elapsed time: 56662.967265 msecs&quot;
-;;; 
+;;;
 ;; <-
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;nab-comportex.method/out-nojump</span>"}
@@ -446,8 +446,8 @@
 
 ;; @@
 (time
-(def out-temp1
-  (htm-anomaly-stream (ts-data temp1) spec-baseline)))
+ (def out-temp1
+   (htm-anomaly-stream (ts-data temp1) spec-baseline)))
 ;; @@
 ;; ->
 ;;; t = 0
@@ -463,7 +463,7 @@
 ;;; t = 20000
 ;;; t = 22000
 ;;; &quot;Elapsed time: 300543.381494 msecs&quot;
-;;; 
+;;;
 ;; <-
 ;; =>
 ;;; {"type":"html","content":"<span class='clj-var'>#&#x27;nab-comportex.method/out-temp1</span>"}
@@ -517,8 +517,8 @@
    spec-baseline
    {:ff-potential-radius 1.0
     :ff-init-frac 0.16
-    :distal {:stimulus-threshold 18}}
-   ))
+    :distal {:stimulus-threshold 18}}))
+
 
 (time
  (def bursts-depth1-global-frac16-st18
@@ -530,8 +530,8 @@
                  a-out (anom/htm-burst-stream ts (partial make-nab-model-from-range spec-headline))]
              [file-id
               a-out])))
-        (into {})))
- )
+        (into {}))))
+
 
 ;; @@
 
@@ -591,13 +591,13 @@
               anomalies-depth1-global-frac16-st18
               (scoring/profiles pid)
               (range 0.2 1.0 0.01)))])
-    [:low-fp-rate :standard :low-fn-rate])
-)
+    [:low-fp-rate :standard :low-fn-rate]))
+
 
 ;; @@
 ;; ->
 ;;; &quot;Elapsed time: 19071.678892 msecs&quot;
-;;; 
+;;;
 ;; <-
 ;; =>
 ;;; {"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fp-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.7000000000000004</span>"},{"type":"html","content":"<span class='clj-double'>63.04518935105084</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:standard</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.48000000000000026</span>"},{"type":"html","content":"<span class='clj-double'>67.3658243985473</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fn-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.48000000000000026</span>"},{"type":"html","content":"<span class='clj-double'>71.92204385190509</span>"}]}]}]}
@@ -642,8 +642,8 @@
    {:ff-potential-radius 1.0
     :ff-init-frac 0.16
     :distal {:stimulus-threshold 18}
-    :transition-similarity 0.8}
-   ))
+    :transition-similarity 0.8}))
+
 
 (time
  (def bursts-depth1-efft-global-frac16-st18
@@ -655,8 +655,8 @@
                  a-out (anom/htm-burst-stream ts (partial make-nab-model-from-range spec-efft))]
              [file-id
               a-out])))
-        (into {})))
- )
+        (into {}))))
+
 
 ;; @@
 
@@ -687,13 +687,13 @@
               anomalies-depth1-efft-global-frac16-st18
               (scoring/profiles pid)
               (range 0.2 1.0 0.01)))])
-    [:low-fp-rate :standard :low-fn-rate])
-)
+    [:low-fp-rate :standard :low-fn-rate]))
+
 
 ;; @@
 ;; ->
 ;;; &quot;Elapsed time: 19442.667937 msecs&quot;
-;;; 
+;;;
 ;; <-
 ;; =>
 ;;; {"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fp-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.6500000000000004</span>"},{"type":"html","content":"<span class='clj-double'>63.589024151423054</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:standard</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.47000000000000025</span>"},{"type":"html","content":"<span class='clj-double'>67.88487991749766</span>"}]}]},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-keyword'>:low-fn-rate</span>"},{"type":"list-like","open":"<span class='clj-vector'>[</span>","close":"<span class='clj-vector'>]</span>","separator":" ","items":[{"type":"html","content":"<span class='clj-double'>0.26000000000000006</span>"},{"type":"html","content":"<span class='clj-double'>72.53697625727789</span>"}]}]}]}

@@ -1,6 +1,6 @@
 (ns nab-comportex.scoring
-  (:require [clj-time.core :as t]
-            ))
+  (:require [clj-time.core :as t]))
+
 
 (def profiles
   {:standard {:TP 1.0
@@ -32,8 +32,8 @@
         (- 1.0)
         (* (if missed?
              (- FP)
-             (/ TP 0.98661) ;; adjust by maximum scaled sigmoid
-             )))))
+             (/ TP 0.98661)))))) ;; adjust by maximum scaled sigmoid
+
 
 (defn warmup-period
   [ts]
@@ -120,8 +120,8 @@
                    ;; else
                    :else scores)))
         ;; done
-        scores)
-      )))
+        scores))))
+
 
 (defn ts-results
   [anomaly-ts windows profile threshold wait]
@@ -132,8 +132,8 @@
      :confusion (frequencies (map :type scores))
      :scores scores
      :n-anomalies (count windows)
-     :profile profile
-     }))
+     :profile profile}))
+
 
 (defn combine-results
   [many-ts-results]
@@ -145,8 +145,8 @@
     {:nab-sum total-nab-sum
      :confusion cfn
      :n-anomalies total-n
-     :profile (:profile (first vs))
-     }))
+     :profile (:profile (first vs))}))
+
 
 (defn normalised-nab-score
   ([results]

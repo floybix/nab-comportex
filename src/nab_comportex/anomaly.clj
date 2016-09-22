@@ -2,8 +2,8 @@
   (:require [org.nfrac.comportex.core :as core]
             [org.nfrac.comportex.protocols :as p]
             [org.nfrac.comportex.encoders :as e]
-            [clojure.set :as set]
-            ))
+            [clojure.set :as set]))
+
 
 (defn htm-burst-stream
   [ts make-model]
@@ -20,8 +20,8 @@
               lyr (-> rgn (get (first (core/layers rgn))))
               effective? (== (:timestep (:prior-state lyr))
                              (:timestep (:state lyr)))
-              t (p/timestep htm)
-              ]
+              t (p/timestep htm)]
+
           (when (zero? (mod t 2000))
             (println "t =" t))
           (if effective?
@@ -39,15 +39,15 @@
                                       :n-b-cols (count b-cols)
                                       :n-new-a-cols (count new-a-cols)
                                       :n-new-b-cols (count new-b-cols)
-                                      :n-newly-b-cols (count newly-b-cols)
-                                      ))))
+                                      :n-newly-b-cols (count newly-b-cols)))))
+
             ;; not an effective step
             (recur (rest ts)
                    nhtm
                    prev-a-cols
                    prev-b-cols
-                   (conj out rec))
-            ))
+                   (conj out rec))))
+
         ;; done
         out))))
 

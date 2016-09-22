@@ -13,6 +13,4 @@
   :repl-options {;:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
                  :init-ns org.numenta.sanity.comportex.launchpad}
 
-  :profiles {:dev {:dependencies [[org.numenta/sanity "0.0.14-SNAPSHOT"]]
-                   }}
-  )
+  :profiles {:dev {:dependencies [[org.numenta/sanity "0.0.14-SNAPSHOT"]]}})
