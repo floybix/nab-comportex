@@ -1,9 +1,6 @@
 (ns nab-comportex.anomaly
-  (:require [org.nfrac.comportex.core :as core]
-            [org.nfrac.comportex.protocols :as p]
-            [org.nfrac.comportex.encoders :as e]
+  (:require [org.nfrac.comportex.core :as cx]
             [clojure.set :as set]))
-
 
 (defn htm-burst-stream
   [ts make-model]
@@ -15,18 +12,17 @@
            prev-b-cols #{}
            out []]
       (if-let [rec (first ts)]
-        (let [nhtm (p/htm-step htm rec)
-              rgn (-> nhtm (core/region-seq) (first))
-              lyr (-> rgn (get (first (core/layers rgn))))
-              effective? (== (:timestep (:prior-state lyr))
-                             (:timestep (:state lyr)))
-              t (p/timestep htm)]
-
+        (let [nhtm (cx/htm-step htm rec)
+              lyr (-> nhtm (cx/layer-seq) (first))
+              effective? (== (:timestep (:prior-active-state lyr))
+                             (:timestep (:active-state lyr)))
+              t (cx/timestep htm)]
           (when (zero? (mod t 2000))
             (println "t =" t))
           (if effective?
-            (let [a-cols (p/active-columns lyr)
-                  b-cols (p/bursting-columns lyr)
+            (let [info (cx/layer-state lyr)
+                  a-cols (:active-columns info)
+                  b-cols (:bursting-columns info)
                   new-a-cols (set/difference a-cols prev-a-cols)
                   new-b-cols (set/difference b-cols prev-a-cols)
                   newly-b-cols (set/difference b-cols prev-b-cols)]
@@ -40,14 +36,12 @@
                                       :n-new-a-cols (count new-a-cols)
                                       :n-new-b-cols (count new-b-cols)
                                       :n-newly-b-cols (count newly-b-cols)))))
-
             ;; not an effective step
             (recur (rest ts)
                    nhtm
                    prev-a-cols
                    prev-b-cols
                    (conj out rec))))
-
         ;; done
         out))))
 

@@ -3,8 +3,8 @@
   :url "https://github.com/floybix/nab-comportex"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.nfrac/comportex "0.0.15-SNAPSHOT"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha12"]
+                 [org.nfrac/comportex "0.0.16-SNAPSHOT"]
                  [org.clojure/data.priority-map "0.0.7"]
                  [org.clojure/data.codec "0.1.0"]
                  [org.clojure/data.json "0.2.6"]
@@ -13,4 +13,4 @@
   :repl-options {;:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]
                  :init-ns org.numenta.sanity.comportex.launchpad}
 
-  :profiles {:dev {:dependencies [[org.numenta/sanity "0.0.14-SNAPSHOT"]]}})
+  :profiles {:dev {:dependencies [[org.numenta/sanity "0.0.16-SNAPSHOT"]]}})
